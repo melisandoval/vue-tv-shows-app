@@ -1,0 +1,54 @@
+@use "../../scss/abstracts/mixins" as *;
+
+header {
+  position: fixed;
+  width: 100%;
+  height: max-content;
+}
+
+nav {
+  padding: 1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  font-weight: 700;
+}
+
+.nav-logo {
+  display: flex;
+  gap: 0.2em;
+  align-items: end;
+
+  &-img {
+    max-width: 25px;
+  }
+}
+
+.nav-links {
+  @include centerXY();
+
+  &-ul {
+    display: none;
+
+    @include mq-tablet() {
+      @include flex-1emgap-align-center();
+    }
+  }
+
+  &-burger {
+    @include mq-tablet() {
+      display: none;
+    }
+  }
+
+  &-link {
+    color: white;
+    font-weight: 700;
+    padding-bottom: 1em;
+
+    &:hover {
+      text-decoration: underline;
+      text-underline-offset: 0.5em;
+    }
+  }
+}

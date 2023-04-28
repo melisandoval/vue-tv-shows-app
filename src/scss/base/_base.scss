@@ -4,9 +4,11 @@
 
 body {
   background-color: map-get($colors, dark-blue);
+  width: 100%;
 }
 
 main {
-  min-height: 96vh;
+  min-height: 93vh;
+  width: 100%;
   @include centerXY();
 }

@@ -1,0 +1,14 @@
+@use "../../scss/abstracts/mixins" as *;
+
+.footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  height: fit-content;
+
+  @include centerXY();
+
+  &-content {
+    padding: 0.5em;
+  }
+}
