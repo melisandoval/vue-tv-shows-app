@@ -1,0 +1,4 @@
+@mixin centerXY() {
+  display: grid;
+  place-items: center;
+}

@@ -1,0 +1,8 @@
+@import "../../scss/abstracts/variables";
+
+.button-primary {
+  background-color: map-get($colors, primary-fuchsia);
+  color: map-get($colors, primary-white);
+  padding: 0.5em 1em 0.6em;
+  border-radius: 1.1em;
+}

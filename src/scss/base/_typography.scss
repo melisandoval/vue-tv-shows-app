@@ -1,0 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;700;900&display=swap");
+@import "../abstracts/variables";
+
+:root {
+  font-family: "Lato", sans-serif, Helvetica, Arial, sans-serif;
+  color: map-get($colors, primary-white);
+}
+
+a {
+  color: map-get($colors, primary-fuchsia);
+}
+
+button {
+  font-family: "Lato", sans-serif, Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+
+p {
+  font-size: 1rem;
+  font-weight: 300;
+}

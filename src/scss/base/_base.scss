@@ -1,0 +1,12 @@
+@import "./typography";
+@import "../abstracts/variables";
+@import "../abstracts/mixins";
+
+body {
+  background-color: map-get($colors, dark-blue);
+}
+
+main {
+  min-height: 96vh;
+  @include centerXY();
+}
