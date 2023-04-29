@@ -10,7 +10,7 @@ const routes: RouteRecordRaw[] = [
     component: HomePage,
   },
   {
-    path: "/list-page",
+    path: "/list-page/:listname",
     name: "List Page",
     component: ListPage,
   },
