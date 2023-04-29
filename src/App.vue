@@ -10,14 +10,14 @@
 import Header from "./layout/Header/Header.vue";
 import Footer from "./layout/Footer/Footer.vue";
 import { ref } from "vue";
-import { useListsStore } from "./stores/listsStore";
+import { useDataStore } from "./stores/dataStore";
 
-const listStore = useListsStore();
+const dataStore = useDataStore();
 
 const listToShow = ref({});
 
 function handleShowList(list: object) {
   listToShow.value = list;
-  listStore.setSelectedList(listToShow.value);
+  dataStore.setSelectedList(listToShow.value);
 }
 </script>

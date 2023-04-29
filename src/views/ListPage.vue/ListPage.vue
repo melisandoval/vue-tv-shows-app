@@ -1,13 +1,24 @@
 <template>
   <section>
-    <h1>{{ listStore.selectedList.DISPLAY }}</h1>
+    <h1>{{ selectedList.DISPLAY }}</h1>
   </section>
 </template>
 
 <script setup lang="ts">
-import { useListsStore } from "../../stores/listsStore";
+import { storeToRefs } from "pinia";
+import { useDataStore } from "../../stores/dataStore";
+import { watch, onMounted } from "vue";
 
-const listStore = useListsStore();
+const dataStore = useDataStore();
+const { selectedList } = storeToRefs(dataStore);
+
+onMounted(async function () {
+  await dataStore.getSelectedListData();
+});
+
+watch(selectedList, async function () {
+  dataStore.getSelectedListData();
+});
 </script>
 
 <style scoped></style>
