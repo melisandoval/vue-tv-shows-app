@@ -15,7 +15,7 @@ const routes: RouteRecordRaw[] = [
     component: ListPage,
   },
   {
-    path: "/details-page",
+    path: "/details-page/:id",
     name: "Details Page",
     component: DetailsPage,
   },

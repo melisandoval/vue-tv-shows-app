@@ -1,6 +1,6 @@
 <template>
   <li>
-    <button class="card">
+    <button class="card" @click="handleCardClick">
       <img class="card-img" :src="img" />
       <h4 class="card-title">
         <span>{{ title }}</span>
@@ -14,11 +14,13 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import "./Card.scss";
+import router from "../../router";
 
 interface CardItem {
   name: string;
   poster_path: string;
   first_air_date: string;
+  id: number;
 }
 
 const props = defineProps<{
@@ -29,6 +31,11 @@ const img = ref(`https://image.tmdb.org/t/p/w500${props.item.poster_path}`);
 // more info about image link: https://developers.themoviedb.org/3/getting-started/images
 const title = ref(props.item.name);
 const year = ref(props.item.first_air_date.slice(0, 4));
+
+function handleCardClick() {
+  const cardId = props.item.id;
+  router.push(`/details-page/${cardId.toString()}`);
+}
 </script>
 
 <style scoped></style>
