@@ -5,7 +5,11 @@
     <section v-if="tvShowData && !showPending" class="article">
       <article class="article-content">
         <div class="poster-container">
-          <img :src="tvShowData.poster" alt="" class="poster" />
+          <img
+            :src="tvShowData.poster"
+            :alt="tvShowData.title"
+            class="poster"
+          />
         </div>
         <div class="article-content-text">
           <h1>
@@ -28,7 +32,11 @@
         </div>
       </article>
       <div class="article-bg-img-container">
-        <img :src="tvShowData.bgImg" alt="" class="article-bg-img" />
+        <img
+          :src="tvShowData.bgImg"
+          :alt="tvShowData.title"
+          class="article-bg-img"
+        />
       </div>
     </section>
   </section>
@@ -62,10 +70,11 @@ const ERROR_MESSAGE =
 const showPending = ref(false);
 
 onMounted(async function () {
+  window.scrollTo(0, 0);
+
   showPending.value = true;
 
   const APIData = await getSingleShowDetails(id);
-  console.log(APIData);
 
   tvShowData.bgImg = `https://image.tmdb.org/t/p/original${APIData.backdrop_path}`;
   tvShowData.poster = `https://image.tmdb.org/t/p/w500/${APIData.poster_path}`;
