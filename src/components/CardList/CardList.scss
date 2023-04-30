@@ -1,0 +1,31 @@
+@use "../../scss//abstracts/mixins" as *;
+
+.card-list {
+  padding-top: 4em;
+
+  @include centerXY();
+
+  @include mq-tablet() {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2em;
+  }
+
+  @include mq-laptop-small() {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 3em;
+  }
+
+  @include mq-laptop-large() {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3em;
+  }
+
+  @include mq-laptop-x-large() {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 4em;
+  }
+}

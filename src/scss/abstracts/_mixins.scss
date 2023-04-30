@@ -14,3 +14,21 @@
     @content;
   }
 }
+
+@mixin mq-laptop-small() {
+  @media screen and (min-width: "1024px") {
+    @content;
+  }
+}
+
+@mixin mq-laptop-large() {
+  @media screen and (min-width: "1440px") {
+    @content;
+  }
+}
+
+@mixin mq-laptop-x-large() {
+  @media screen and (min-width: "1920px") {
+    @content;
+  }
+}

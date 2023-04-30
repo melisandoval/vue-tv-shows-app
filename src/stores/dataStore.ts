@@ -74,9 +74,9 @@ export const useDataStore = defineStore("data", {
     // this action will check if we already have the selected list data in listsData state
     // if we don't have the specific list, will fetch that list specifically
     // and set that lists specifically on listsData state to keep it for later
-    async getSelectedListData() {
+    async getSelectedListData(listName: string) {
       // cases are the same as from MAIN_LISTS[index].NAME on constants.ts
-      switch (this.selectedList.NAME) {
+      switch (listName) {
         case "TOP_RATED":
           if (this.listsData.topRated !== null) {
             return this.listsData.topRated;

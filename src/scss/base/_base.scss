@@ -8,7 +8,10 @@ body {
 }
 
 main {
+  padding-top: 140px;
+  padding-bottom: 6em;
   min-height: 93vh;
+  max-height: fit-content;
   width: 100%;
   @include centerXY();
 }
