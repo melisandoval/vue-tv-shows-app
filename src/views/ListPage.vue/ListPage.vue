@@ -2,6 +2,7 @@
   <section class="list-page">
     <h1>{{ title }}</h1>
     <p v-if="showPending && !listToShow">Pending...</p>
+    <p v-if="!showPending && !listToShow">{{ errorMSG }}</p>
     <CardList v-if="listToShow" :data="listToShow.results" />
   </section>
 </template>
@@ -43,6 +44,8 @@ interface ListToShow {
 const listToShow: Ref<null | ListToShow> = ref(null);
 const showPending: Ref<boolean> = ref(false);
 const title = ref("TV Shows");
+const errorMSG =
+  "Sorry, we're currently experiencing technical difficulties. Please try again later.";
 
 const TITLES = {
   topRatedListTitle: "Top Rated TV Shows",
