@@ -1,6 +1,6 @@
 <template>
   <section class="list-page">
-    <h1>{{ selectedList.DISPLAY || title }}</h1>
+    <h1>{{ title }}</h1>
     <p v-if="showPending && !listToShow">Pending...</p>
     <CardList v-if="listToShow" :data="listToShow.results" />
   </section>
@@ -16,6 +16,9 @@ import "./ListPage.scss";
 
 const dataStore = useDataStore();
 const { selectedList } = storeToRefs(dataStore);
+
+const route = useRoute();
+const routeListName = route.params.listname as string;
 
 interface DataItem {
   poster_path: string;
@@ -39,77 +42,82 @@ interface ListToShow {
 
 const listToShow: Ref<null | ListToShow> = ref(null);
 const showPending: Ref<boolean> = ref(false);
+const title = ref("TV Shows");
 
-const route = useRoute();
-const routeListName = route.params.listname;
+const TITLES = {
+  topRatedListTitle: "Top Rated TV Shows",
+  popularListTitle: "Popular TV Shows",
+  onTVListTitle: "Currently Airing TV Shows",
+  airingTodayListTitle: "TV Shows Airing Today",
+};
 
-const title = ref("");
+// constants for setComponentData():
+const LISTS = {
+  topRated: { name: "TOP_RATED", urlParam: "top-rated" },
+  popular: { name: "POPULAR", urlParam: "POPULAR" },
+  onTV: { name: "ON_TV", urlParam: "on-tv" },
+  airingToday: { name: "AIRING_TODAY", urlParam: "airing-today" },
+};
 
-onMounted(async function () {
+async function setComponentData(listName: string) {
   showPending.value = true;
 
-  // fetch the data for this component:
-  switch (routeListName) {
-    case "top-rated":
-      await dataStore.getSelectedListData("TOP_RATED");
-      listToShow.value = dataStore.listsData?.topRated as ListToShow;
-      title.value = "Top Rated";
-      break;
-    case "popular":
-      await dataStore.getSelectedListData("POPULAR");
-      listToShow.value = dataStore.listsData?.popular as ListToShow;
-      title.value = "Popular";
-      break;
-    case "on-tv":
-      await dataStore.getSelectedListData("ON_TV");
-      listToShow.value = dataStore.listsData?.onTV as ListToShow;
-      title.value = "On TV";
-      break;
-    case "airing-today":
-      await dataStore.getSelectedListData("AIRING_TODAY");
-      listToShow.value = dataStore.listsData?.airingToday as ListToShow;
-      title.value = "Airing Today";
-      break;
-    default:
-      await dataStore.getSelectedListData("TOP_RATED");
-      break;
+  const listIsTopRated =
+    listName === LISTS.topRated.name || listName === LISTS.topRated.urlParam;
+  const listIsPopular =
+    listName === LISTS.popular.name || listName === LISTS.popular.urlParam;
+  const listIsOnTV =
+    listName === LISTS.onTV.name || listName === LISTS.onTV.urlParam;
+  const listIsAiringToday =
+    listName === LISTS.airingToday.name ||
+    listName === LISTS.airingToday.urlParam;
+
+  if (listIsTopRated) {
+    await dataStore.getSelectedListData(LISTS.topRated.name);
+    listToShow.value = dataStore.listsData?.topRated as ListToShow;
+    title.value = TITLES.topRatedListTitle;
+    showPending.value = false;
+    return;
   }
 
-  if (listToShow.value) {
+  if (listIsPopular) {
+    await dataStore.getSelectedListData(LISTS.popular.name);
+    listToShow.value = dataStore.listsData?.popular as ListToShow;
+    title.value = TITLES.popularListTitle;
     showPending.value = false;
+    return;
   }
+
+  if (listIsOnTV) {
+    await dataStore.getSelectedListData(LISTS.onTV.name);
+    listToShow.value = dataStore.listsData?.onTV as ListToShow;
+    title.value = TITLES.onTVListTitle;
+    showPending.value = false;
+    return;
+  }
+
+  if (listIsAiringToday) {
+    await dataStore.getSelectedListData(LISTS.airingToday.name);
+    listToShow.value = dataStore.listsData?.airingToday as ListToShow;
+    title.value = TITLES.airingTodayListTitle;
+    showPending.value = false;
+    return;
+  }
+
+  // default:
+  await dataStore.getSelectedListData(LISTS.topRated.name);
+  listToShow.value = dataStore.listsData?.topRated as ListToShow;
+  title.value = TITLES.topRatedListTitle;
+  showPending.value = false;
+  return;
+}
+
+onMounted(async function () {
+  await setComponentData(routeListName);
 });
 
 watch(selectedList, async function () {
-  console.log("entra en el watch");
-  showPending.value = true;
-
-  switch (selectedList.value.NAME) {
-    case "TOP_RATED":
-      console.log("entra en el WATCH TOP RATED");
-      await dataStore.getSelectedListData("TOP_RATED");
-      listToShow.value = dataStore.listsData.topRated as ListToShow;
-      showPending.value = false;
-      break;
-    case "POPULAR":
-      console.log("entra en el WATCH POPULAR");
-      await dataStore.getSelectedListData("POPULAR");
-      listToShow.value = dataStore.listsData.popular as ListToShow;
-      showPending.value = false;
-      break;
-    case "ON_TV":
-      console.log("entra en el WATCH ON_TV");
-      await dataStore.getSelectedListData("ON_TV");
-      listToShow.value = dataStore.listsData.onTV as ListToShow;
-      showPending.value = false;
-      break;
-    case "AIRING_TODAY":
-      console.log("entra en el WATCH AIRING_TODAY");
-      await dataStore.getSelectedListData("AIRING_TODAY");
-      listToShow.value = dataStore.listsData.airingToday as ListToShow;
-      showPending.value = false;
-      break;
-  }
+  setComponentData(selectedList.value.NAME);
 });
 </script>
 
