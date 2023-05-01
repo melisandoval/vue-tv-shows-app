@@ -3,7 +3,7 @@
     <nav>
       <div>
         <router-link to="/" class="nav-logo">
-          <img src="../../assets/SVG/LogoIcon.svg" class="nav-logo-img" />
+          <img src="/LogoIcon.svg" class="nav-logo-img" />
           <span class="nav-logo-text">TV Guide!</span></router-link
         >
       </div>
