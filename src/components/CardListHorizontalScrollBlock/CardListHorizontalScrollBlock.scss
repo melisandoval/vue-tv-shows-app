@@ -1,0 +1,27 @@
+.horizontal-scroll-section {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 3em 2em 2em 0;
+  display: grid;
+  justify-items: center;
+}
+
+.horizontal-scroll-section-container {
+  max-width: 90vw;
+}
+
+.horizontal-scroll-list {
+  box-sizing: border-box;
+  padding: 2em 2em 2em 0;
+  display: grid;
+  grid-template-columns: repeat(20, 200px);
+  align-items: start;
+  gap: 1em;
+
+  overflow-x: scroll;
+}
+
+h2 {
+  text-align: left;
+  padding-left: 0.5em;
+}

@@ -152,20 +152,3 @@ p {
     width: 100%;
   }
 }
-
-.more-info-list-block {
-  display: grid;
-  justify-items: center;
-}
-
-.horizontal-list {
-  box-sizing: border-box;
-  padding: 3em 2em 2em 0;
-  max-width: 90vw;
-  display: grid;
-  grid-template-columns: repeat(20, 200px);
-  align-items: start;
-  gap: 1em;
-
-  overflow-x: scroll;
-}

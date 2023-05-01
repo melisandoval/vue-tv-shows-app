@@ -18,7 +18,7 @@ import router from "../../router";
 
 interface CardItem {
   name: string;
-  poster_path: string;
+  poster_path: string | null;
   first_air_date: string;
   id: number;
 }
