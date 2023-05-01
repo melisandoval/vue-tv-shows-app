@@ -4,11 +4,11 @@
       <div>
         <router-link to="/" class="nav-logo">
           <img src="../../assets/SVG/LogoIcon.svg" class="nav-logo-img" />
-          <span>TV Guide!</span></router-link
+          <span class="nav-logo-text">TV Guide!</span></router-link
         >
       </div>
       <div class="nav-links">
-        <button><BurgerIconSVG class="nav-links-burger" /></button>
+        <button><BurgerIconSVG class="burger" /></button>
         <ul class="nav-links-ul">
           <li v-for="list in MAIN_LISTS">
             <router-link

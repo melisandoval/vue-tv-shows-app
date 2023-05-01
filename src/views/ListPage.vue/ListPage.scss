@@ -1,5 +1,13 @@
 @use "../../scss/abstracts/mixins" as *;
 
 .list-page {
+  box-sizing: border-box;
+  margin-top: 2em;
+  padding: 2em;
+
   @include centerXY();
+}
+
+h1 {
+  text-align: center;
 }
