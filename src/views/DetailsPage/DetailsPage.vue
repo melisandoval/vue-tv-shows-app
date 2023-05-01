@@ -1,47 +1,10 @@
 <template>
-  <section>
+  <section class="details-page-container">
     <div v-if="showPending"><Spinner /></div>
     <p v-if="showErrorMsg && !showPending">{{ ERROR_MESSAGE }}</p>
 
     <section v-if="!showPending && !showErrorMsg" class="details-page">
-      <section class="article">
-        <article class="article-content">
-          <div class="poster-container">
-            <img
-              :src="tvShowData.poster"
-              :alt="tvShowData.title"
-              class="poster"
-            />
-          </div>
-          <div class="article-content-text">
-            <h1>
-              {{ tvShowData.title }}
-              <span class="year">({{ tvShowData.year }})</span>
-            </h1>
-            <p>
-              {{ tvShowData.genres }} |
-              <span class="highlighted"> ★ {{ tvShowData.score }}</span>
-            </p>
-            <p>{{ tvShowData.summary }}</p>
-            <p>
-              Status:
-              <span class="highlighted">{{ tvShowData.status }}</span> &nbsp; |
-              &nbsp; Seasons:
-              <span class="highlighted">{{ tvShowData.seasons }}</span> &nbsp; |
-              &nbsp; Episodes:
-              <span class="highlighted">{{ tvShowData.episodes }}</span>
-            </p>
-          </div>
-        </article>
-        <div class="article-bg-img-container">
-          <img
-            v-if="tvShowData.bgImg.length > 1"
-            :src="tvShowData.bgImg"
-            :alt="tvShowData.title"
-            class="article-bg-img"
-          />
-        </div>
-      </section>
+      <DetailsPageHeader :tvShowData="tvShowData" />
 
       <section class="more-info">
         <div class="more-info-container">
@@ -62,6 +25,7 @@ import { onMounted, reactive, ref, watch, onUnmounted } from "vue";
 import "./DetailsPage.scss";
 import Spinner from "../../assets/Spinner.vue";
 import CardListHorizontalScrollBlock from "../../components/CardListHorizontalScrollBlock/CardListHorizontalScrollBlock.vue";
+import DetailsPageHeader from "./components/DetailsPageHeader/DetailsPageHeader.vue";
 
 const route = useRoute();
 

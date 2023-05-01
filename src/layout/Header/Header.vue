@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header class="header">
     <nav>
       <div>
         <router-link to="/" class="nav-logo">

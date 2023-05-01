@@ -1,0 +1,144 @@
+@use "../../../../scss/abstracts/variables" as *;
+@use "../../../../scss/abstracts/mixins" as *;
+
+.details-page-header {
+  position: relative;
+}
+
+.article {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: grid;
+  justify-items: center;
+
+  &-bg-img-container {
+    position: relative;
+    max-width: 100%;
+    width: 100%;
+
+    min-height: 1000px;
+
+    @include mq-tablet() {
+      min-height: 60vh;
+      max-height: 80vh;
+    }
+
+    @include mq-laptop-small() {
+      min-height: 86vh;
+    }
+
+    @include mq-laptop-x-large() {
+      max-height: 80vh;
+    }
+  }
+
+  &-bg-img {
+    width: 100%;
+    height: 100%;
+    position: inherit;
+    width: 100%;
+    object-fit: cover;
+    opacity: 0.3;
+    z-index: 0;
+  }
+}
+
+.article-content {
+  max-width: 100%;
+  padding: 2em;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  gap: 2em;
+  flex-direction: column;
+  justify-content: center;
+  align-items: end;
+  box-sizing: border-box;
+
+  @include mq-tablet() {
+    padding: 4em;
+    display: grid;
+    grid-template-columns: 35% 65%;
+    gap: 1em;
+  }
+
+  @include mq-laptop-large() {
+    gap: 3em;
+  }
+}
+
+.article-content-text {
+  background-color: rgba(10, 19, 67, 0.488);
+  border-radius: 0.5em;
+  padding: 1em;
+  max-width: 800px;
+
+  @include mq-laptop-large() {
+    padding: 0 4em;
+  }
+}
+
+.poster-container {
+  width: 100%;
+  display: grid;
+  place-items: center;
+
+  @include mq-tablet() {
+    align-items: end;
+  }
+
+  @include mq-laptop-large() {
+    justify-items: end;
+  }
+}
+
+.poster {
+  max-width: 200px;
+  border-radius: 2em;
+
+  @include mq-laptop-small() {
+    max-width: 300px;
+  }
+
+  @include mq-laptop-large() {
+    max-width: 400px;
+  }
+}
+
+h1 {
+  font-size: 1.5rem;
+  padding: 1em 0 0.5em;
+
+  // reset
+  margin-block-start: 0;
+  margin-block-end: 0;
+
+  @include mq-tablet() {
+    text-align: left;
+  }
+
+  .year {
+    font-weight: 300;
+  }
+
+  @include mq-laptop-large() {
+    font-size: 3rem;
+  }
+}
+
+p {
+  font-size: 0.8rem;
+  font-weight: 300;
+  line-height: 150%;
+
+  @include mq-laptop-large() {
+    font-size: 1.4rem;
+  }
+}
+
+.highlighted {
+  color: map-get($colors, primary-fuchsia);
+}
