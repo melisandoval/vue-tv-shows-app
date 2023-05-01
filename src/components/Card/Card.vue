@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import "./Card.scss";
 import router from "../../router";
 
@@ -27,8 +27,17 @@ const props = defineProps<{
   item: CardItem;
 }>();
 
-const img = ref(`https://image.tmdb.org/t/p/w500${props.item.poster_path}`);
-// more info about image link: https://developers.themoviedb.org/3/getting-started/images
+const POSTER_DEFAULT = "/poster-default.png";
+
+const img = computed(function () {
+  if (props.item.poster_path === null) {
+    return POSTER_DEFAULT;
+  }
+
+  return `https://image.tmdb.org/t/p/w500${props.item.poster_path}`;
+  // more info about image link: https://developers.themoviedb.org/3/getting-started/images
+});
+
 const title = ref(props.item.name);
 const year = ref(props.item.first_air_date.slice(0, 4));
 
