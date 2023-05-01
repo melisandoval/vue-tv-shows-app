@@ -1,9 +1,13 @@
 <template>
   <section class="list-page">
-    <h1>{{ title }}</h1>
-    <p v-if="showPending && !listToShow">Pending...</p>
-    <p v-if="!showPending && !listToShow">{{ errorMSG }}</p>
-    <CardList v-if="listToShow" :data="listToShow.results" />
+    <div v-if="showPending && !listToShow"><Spinner /></div>
+    <div v-if="!showPending && !listToShow">
+      <p>{{ errorMSG }}</p>
+    </div>
+    <div v-if="listToShow">
+      <h1>{{ title }}</h1>
+      <CardList :data="listToShow.results" />
+    </div>
   </section>
 </template>
 
@@ -14,6 +18,7 @@ import { watch, onMounted, Ref, ref } from "vue";
 import CardList from "../../components/CardList/CardList.vue";
 import { useRoute } from "vue-router";
 import "./ListPage.scss";
+import Spinner from "../../assets/Spinner.vue";
 
 const dataStore = useDataStore();
 const { selectedList } = storeToRefs(dataStore);
