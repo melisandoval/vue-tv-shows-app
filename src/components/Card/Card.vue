@@ -34,6 +34,7 @@ const year = ref(props.item.first_air_date.slice(0, 4));
 
 function handleCardClick() {
   const cardId = props.item.id;
+
   router.push(`/details-page/${cardId.toString()}`);
 }
 </script>

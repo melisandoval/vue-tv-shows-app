@@ -39,17 +39,33 @@
         />
       </div>
     </section>
+
+    <section class="more-info">
+      <div class="more-info-container">
+        <section class="more-info-list-block">
+          <h2>Similar shows</h2>
+          <div>
+            <ul class="horizontal-list">
+              <Card v-for="item in similarShows" :item="item" :key="item.id" />
+            </ul>
+          </div>
+        </section>
+      </div>
+    </section>
   </section>
 </template>
 
 <script setup lang="ts">
 import { useRoute } from "vue-router";
-import { getSingleShowDetails } from "../../api";
-import { onMounted, reactive, ref } from "vue";
+import { getSingleShowDetails, getSimilarTVShows } from "../../api";
+import { onMounted, reactive, ref, watch } from "vue";
 import "./DetailsPage.scss";
 
+import Card from "../../components/Card/Card.vue";
+
 const route = useRoute();
-const id = route.params.id as string;
+
+// const id = route.params.id as string;
 
 let tvShowData = reactive({
   bgImg: "",
@@ -69,8 +85,36 @@ const ERROR_MESSAGE =
 
 const showPending = ref(false);
 
+interface DataItem {
+  poster_path: string;
+  popularity: number;
+  id: number;
+  backdrop_path: string;
+  vote_average: number;
+  overview: string;
+  first_air_date: string;
+  origin_country: [];
+  genre_ids: [];
+  original_language: string;
+  vote_count: number;
+  name: string;
+  original_name: string;
+}
+
+const similarShows = ref<DataItem[] | null>(null);
+
 onMounted(async function () {
+  await getComponentData();
+});
+
+watch(route, async function () {
+  await getComponentData();
+});
+
+async function getComponentData() {
   window.scrollTo(0, 0);
+
+  const id = route.params.id as string;
 
   showPending.value = true;
 
@@ -96,8 +140,12 @@ onMounted(async function () {
   tvShowData.seasons = APIData.number_of_seasons;
   tvShowData.episodes = APIData.number_of_episodes;
 
+  // similar shows:
+  const similarShowsAPIData = await getSimilarTVShows(id);
+  similarShows.value = similarShowsAPIData.results;
+
   showPending.value = false;
-});
+}
 </script>
 
 <style scoped></style>
