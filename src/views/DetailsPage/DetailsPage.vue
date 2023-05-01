@@ -35,6 +35,7 @@
         </article>
         <div class="article-bg-img-container">
           <img
+            v-if="tvShowData.bgImg.length > 1"
             :src="tvShowData.bgImg"
             :alt="tvShowData.title"
             class="article-bg-img"
@@ -65,12 +66,25 @@
 <script setup lang="ts">
 import { useRoute } from "vue-router";
 import { getSingleShowDetails, getSimilarTVShows } from "../../api";
-import { onMounted, reactive, ref, watch } from "vue";
+import { onMounted, reactive, ref, watch, onUnmounted } from "vue";
 import "./DetailsPage.scss";
 import Card from "../../components/Card/Card.vue";
 import Spinner from "../../assets/Spinner.vue";
 
 const route = useRoute();
+
+interface TvShowData {
+  bgImg: string;
+  poster: string;
+  title: string;
+  summary: string;
+  year: string;
+  genres: string;
+  score: number;
+  status: string;
+  seasons: string;
+  episodes: string;
+}
 
 let tvShowData = reactive({
   bgImg: "",
@@ -83,6 +97,21 @@ let tvShowData = reactive({
   status: "",
   seasons: "",
   episodes: "",
+});
+
+onUnmounted(function () {
+  tvShowData = reactive<TvShowData>({
+    bgImg: "",
+    poster: "",
+    title: "",
+    summary: "",
+    year: "",
+    genres: "",
+    score: 0,
+    status: "",
+    seasons: "",
+    episodes: "",
+  });
 });
 
 const ERROR_MESSAGE =
@@ -131,15 +160,25 @@ async function getComponentData() {
     showPending.value = false;
   }
 
-  interface Genre {
-    name: string;
+  if (APIData.backdrop_path !== null) {
+    tvShowData.bgImg = `https://image.tmdb.org/t/p/original${APIData.backdrop_path}`;
+  } else {
+    tvShowData.bgImg = "";
   }
 
-  tvShowData.bgImg = `https://image.tmdb.org/t/p/original${APIData.backdrop_path}`;
-  tvShowData.poster = `https://image.tmdb.org/t/p/w500/${APIData.poster_path}`;
+  const POSTER_DEFAULT = "/poster-default.png";
+
+  if (APIData.poster_path !== null) {
+    tvShowData.poster = `https://image.tmdb.org/t/p/w500/${APIData.poster_path}`;
+  } else tvShowData.poster = POSTER_DEFAULT;
+
   tvShowData.title = APIData.name;
   tvShowData.summary = APIData.overview;
   tvShowData.year = APIData?.first_air_date?.slice(0, 4);
+
+  interface Genre {
+    name: string;
+  }
   tvShowData.genres = APIData.genres
     .map(function (genre: Genre) {
       return genre.name;
