@@ -21,11 +21,6 @@ const routes: RouteRecordRaw[] = [
   },
 ];
 
-// const router = createRouter({
-//   history: createWebHistory(),
-//   routes: routes,
-// });
-
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes,
