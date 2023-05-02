@@ -1,4 +1,4 @@
-import { API_KEY } from "./config";
+const API_KEY = import.meta.env.VITE_API_KEY;
 
 const TOP_RATED_API = `https://api.themoviedb.org/3/tv/top_rated?api_key=${API_KEY}&language=en`;
 // API info: https://developers.themoviedb.org/3/tv/get-top-rated-tv
