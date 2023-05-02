@@ -1,4 +1,9 @@
 const API_KEY = import.meta.env.VITE_API_KEY;
+// El valor de API_KEY está siendo aquí importado del archivo .env, el cual no fue subido a GitHub. Por eso,
+// es necesario reemplazar el valor de API_KEY con tu API key de The Movie Database (TMDB) API
+// (info sobre cómo obtener la API key en: https://developers.themoviedb.org/3/getting-started/introduction ).
+// Luego crea un archivo .env en el root de este proyecto y guárdala allí con el formato VITE_API_KEY=aquí tu key sin comillas.
+// Más info sobre variables de entorno con Vite en: https://vitejs.dev/guide/env-and-mode.html
 
 const TOP_RATED_API = `https://api.themoviedb.org/3/tv/top_rated?api_key=${API_KEY}&language=en`;
 // API info: https://developers.themoviedb.org/3/tv/get-top-rated-tv
