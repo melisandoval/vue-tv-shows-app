@@ -47,7 +47,9 @@ Antes de poder ejecutar el proyecto, es necesario que tengas instalado Node.js.
 ### Instalación
 
 1- Clona el repositorio a tu máquina local.
+
 2- Abre una terminal y navega hasta la carpeta raíz del proyecto.
+
 3- Ejecuta `npm install` para instalar las dependencias.
 
 ### Configurar la API key
@@ -59,4 +61,5 @@ Antes de poder ejecutar el proyecto, es necesario que tengas instalado Node.js.
 ### Ejecución
 
 1- Ejecuta `npm run dev` para iniciar el servidor de desarrollo.
+
 2- Abre en tu navegador el link de http://localhost:[puerto] que te indica la terminal para ver la aplicación en funcionamiento.
