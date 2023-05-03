@@ -4,9 +4,7 @@
 
 Sitio web responsive que ofrece una guía de series de televisión, listando las series de televisión según distintas categorías y al hacer clic en la tarjeta de una serie de TV de una lista, se redirige hacia otra página en la cual se muestra más información sobre la película elegida.
 
-El idioma de la web es inglés, ya que si bien mi idea inicial era que la web estuviera en español, finalmente me decanté por hacerla enteramente en inglés debido a que la API utilizada para obtener la información de las series de TV, no proveía traducciones al español de absolutamente todos los contenidos de texto.
-
-La API utilizada es [The Movie Database (TMDB) API](https://developers.themoviedb.org/3/getting-started/introduction), específicamente sus opciones de [end points de TV](https://developers.themoviedb.org/3/tv/get-tv-details).
+El idioma de la web es inglés, ya que si bien mi idea inicial era que la web estuviera en español, finalmente me decanté por hacerla enteramente en inglés debido a que la API utilizada para obtener la información de las series de TV, no proveía traducciones al español de absolutamente todos los contenidos de texto. La API utilizada es [The Movie Database (TMDB) API](https://developers.themoviedb.org/3/getting-started/introduction), específicamente sus opciones de [end points de TV](https://developers.themoviedb.org/3/tv/get-tv-details).
 
 El diseño UI de la web está inspirado en [este diseño en Behance de la diseñadora Rina Grim](https://www.behance.net/gallery/161696289/Movie-app-Movieto) y en [la propia web de TMDB](https://www.themoviedb.org/).
 
