@@ -34,8 +34,6 @@ Algunas de las funcionalidades o características que se encuentran en proceso d
 
 https://vue-tv-shows-app-melisandoval.vercel.app/
 
-Aclaración: lamentablemente actualmente hay un problema con el deploy que no permite acceder a cada una de las distintas URL de la web de manera directa (esto sí funciona al ejecutar el proyecto de manera local). Por lo tanto, para ver las distintas secciones de la web de momento hay que ingresar al link principal y desde allí navegar hasta las distintas secciones.
-
 ## Cómo ejecutar este proyecto
 
 ### Requisitos previos
