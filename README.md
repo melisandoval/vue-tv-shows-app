@@ -4,9 +4,7 @@
 
 Sitio web responsive que ofrece una guía de series de televisión, listando las series de televisión según distintas categorías y al hacer clic en la tarjeta de una serie de TV de una lista, se redirige hacia otra página en la cual se muestra más información sobre la película elegida.
 
-El idioma de la web es inglés, ya que si bien mi idea inicial era que la web estuviera en español, finalmente me decanté por hacerla enteramente en inglés debido a que la API utilizada para obtener la información de las series de TV, no proveía traducciones al español de absolutamente todos los contenidos de texto.
-
-La API utilizada es [The Movie Database (TMDB) API](https://developers.themoviedb.org/3/getting-started/introduction), específicamente sus opciones de [end points de TV](https://developers.themoviedb.org/3/tv/get-tv-details).
+El idioma de la web es inglés, ya que si bien mi idea inicial era que la web estuviera en español, finalmente me decanté por hacerla enteramente en inglés debido a que la API utilizada para obtener la información de las series de TV, no proveía traducciones al español de absolutamente todos los contenidos de texto. La API utilizada es [The Movie Database (TMDB) API](https://developers.themoviedb.org/3/getting-started/introduction), específicamente sus opciones de [end points de TV](https://developers.themoviedb.org/3/tv/get-tv-details).
 
 El diseño UI de la web está inspirado en [este diseño en Behance de la diseñadora Rina Grim](https://www.behance.net/gallery/161696289/Movie-app-Movieto) y en [la propia web de TMDB](https://www.themoviedb.org/).
 
@@ -47,7 +45,9 @@ Antes de poder ejecutar el proyecto, es necesario que tengas instalado Node.js.
 ### Instalación
 
 1- Clona el repositorio a tu máquina local.
+
 2- Abre una terminal y navega hasta la carpeta raíz del proyecto.
+
 3- Ejecuta `npm install` para instalar las dependencias.
 
 ### Configurar la API key
@@ -59,4 +59,5 @@ Antes de poder ejecutar el proyecto, es necesario que tengas instalado Node.js.
 ### Ejecución
 
 1- Ejecuta `npm run dev` para iniciar el servidor de desarrollo.
+
 2- Abre en tu navegador el link de http://localhost:[puerto] que te indica la terminal para ver la aplicación en funcionamiento.
