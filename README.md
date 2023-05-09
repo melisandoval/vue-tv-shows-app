@@ -1,5 +1,7 @@
 # TV Shows App
 
+![tv-shows-app](https://github.com/melisandoval/vue-tv-shows-app/assets/94930294/bdcd6203-0ee9-4a37-991e-38989a76e25d)
+
 ## Descripción
 
 Sitio web responsive que ofrece una guía de series de televisión, listando las series de televisión según distintas categorías y al hacer clic en la tarjeta de una serie de TV de una lista, se redirige hacia otra página en la cual se muestra más información sobre la película elegida.
