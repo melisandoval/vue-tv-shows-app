@@ -1,4 +1,4 @@
-# TV Shows App
+# TV Shows Guide
 
 ![tv-shows-app](https://github.com/melisandoval/vue-tv-shows-app/assets/94930294/bdcd6203-0ee9-4a37-991e-38989a76e25d)
 
